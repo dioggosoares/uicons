@@ -1,0 +1,11 @@
+{
+  "name": "@uicons/eslint-config",
+  "version": "1.0.1",
+  "license": "MIT",
+  "private": true,
+  "main": "index.js",
+  "devDependencies": {
+    "@primittive/eslint-config": "^1.0.3",
+    "eslint": "^8.24.0"
+  }
+}
