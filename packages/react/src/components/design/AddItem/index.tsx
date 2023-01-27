@@ -1,19 +1,14 @@
-interface AddItemProps {
-  className?: string
-  size?: number | string
-  fill?: string
-  inverted?: boolean
-  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'outline' | 'fill'
-}
+import { IconProps } from '../../../@types/IconProps'
 
 export function AddItem({
   size = '1em',
   className,
   fill = 'none',
   inverted = false,
+  customColors,
   weight = 'light',
   ...rest
-}: AddItemProps) {
+}: IconProps) {
   let selectedWeight = ''
   let strokeOut = 'currentColor'
   let strokeIn = 'currentColor'
@@ -55,7 +50,7 @@ export function AddItem({
       <g clipPath="url(#clip0_5_19757)">
         <path
           className={className}
-          stroke={strokeOut}
+          stroke={customColors?.outter || strokeOut}
           strokeWidth={selectedWeight}
           fill="none"
           strokeLinecap="round"
@@ -65,7 +60,7 @@ export function AddItem({
         <path
           fill={fill}
           className={className}
-          stroke={strokeOut}
+          stroke={customColors?.outter || strokeOut}
           strokeWidth={selectedWeight}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -73,7 +68,7 @@ export function AddItem({
         />
         <path
           className={className}
-          stroke={strokeIn}
+          stroke={customColors?.inner || strokeIn}
           strokeWidth={selectedWeight}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -81,7 +76,7 @@ export function AddItem({
         />
         <path
           className={className}
-          stroke={strokeIn}
+          stroke={customColors?.inner || strokeIn}
           strokeWidth={selectedWeight}
           strokeLinecap="round"
           strokeLinejoin="round"

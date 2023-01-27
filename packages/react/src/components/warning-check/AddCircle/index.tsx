@@ -1,19 +1,14 @@
-interface AddCircleProps {
-  className?: string
-  size?: number | string
-  fill?: string
-  inverted?: boolean
-  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'outline' | 'fill'
-}
+import { IconProps } from '../../../@types/IconProps'
 
 export function AddCircle({
   size = '1em',
   className,
   fill = 'none',
   inverted = false,
+  customColors,
   weight = 'light',
   ...rest
-}: AddCircleProps) {
+}: IconProps) {
   let selectedWeight = ''
   let strokeOut = 'currentColor'
   let strokeIn = 'currentColor'
@@ -55,7 +50,7 @@ export function AddCircle({
     >
       <path
         className={className}
-        stroke={strokeOut}
+        stroke={customColors?.outter || strokeOut}
         strokeWidth={selectedWeight}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -63,7 +58,7 @@ export function AddCircle({
       />
       <path
         className={className}
-        stroke={strokeIn}
+        stroke={customColors?.inner || strokeIn}
         strokeWidth={selectedWeight}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -71,7 +66,7 @@ export function AddCircle({
       />
       <path
         className={className}
-        stroke={strokeIn}
+        stroke={customColors?.inner || strokeIn}
         strokeWidth={selectedWeight}
         strokeLinecap="round"
         strokeLinejoin="round"

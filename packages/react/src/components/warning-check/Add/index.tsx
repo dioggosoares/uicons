@@ -1,21 +1,17 @@
-interface AddProps {
-  className?: string
-  size?: number | string
-  fill?: string
-  inverted?: boolean
-  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'outline' | 'fill'
-}
+import { IconProps } from '../../../@types/IconProps'
 
 export function Add({
   size = '1em',
   className,
   fill = 'none',
   inverted = false,
+  customColors,
   weight = 'light',
   ...rest
-}: AddProps) {
+}: IconProps) {
   let selectedWeight = ''
-  let stroke = 'currentColor'
+  let strokeOut = 'currentColor'
+  let strokeIn = 'currentColor'
 
   switch (weight) {
     case 'thin':
@@ -31,7 +27,7 @@ export function Add({
       selectedWeight = '3'
       break
     case 'outline':
-      stroke = inverted ? '#1a1a1a' : 'currentColor'
+      strokeIn = inverted ? '#1a1a1a' : 'currentColor'
       selectedWeight = '1.5'
       break
     case 'fill':
@@ -52,12 +48,20 @@ export function Add({
     >
       <path
         className={className}
-        stroke={stroke}
+        stroke={customColors?.outter || strokeOut}
         strokeWidth={selectedWeight}
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M6 12h12M12 18V6"
-      ></path>
+        d="M6 12H18"
+      />
+      <path
+        className={className}
+        stroke={customColors?.inner || strokeIn}
+        strokeWidth={selectedWeight}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 18V6"
+      />
     </svg>
   )
 }

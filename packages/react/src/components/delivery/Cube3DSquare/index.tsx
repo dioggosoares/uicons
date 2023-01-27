@@ -1,19 +1,14 @@
-interface Cube3DSquareProps {
-  className?: string
-  size?: number | string
-  fill?: string
-  inverted?: boolean
-  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'outline' | 'fill'
-}
+import { IconProps } from '../../../@types/IconProps'
 
 export function Cube3DSquare({
   size = '1em',
   className,
   fill = 'none',
   inverted = false,
+  customColors,
   weight = 'light',
   ...rest
-}: Cube3DSquareProps) {
+}: IconProps) {
   let selectedWeight = ''
   let strokeOut = 'currentColor'
   let strokeIn = 'currentColor'
@@ -53,7 +48,7 @@ export function Cube3DSquare({
     >
       <path
         className={className}
-        stroke={strokeOut}
+        stroke={customColors?.outter || strokeOut}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={selectedWeight}
@@ -61,7 +56,7 @@ export function Cube3DSquare({
       ></path>
       <path
         className={className}
-        stroke={strokeIn}
+        stroke={customColors?.inner || strokeIn}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={selectedWeight}
@@ -69,7 +64,7 @@ export function Cube3DSquare({
       ></path>
       <path
         className={className}
-        stroke={strokeIn}
+        stroke={customColors?.inner || strokeIn}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={selectedWeight}

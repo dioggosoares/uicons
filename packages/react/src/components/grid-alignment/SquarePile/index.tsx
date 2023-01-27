@@ -1,19 +1,14 @@
-interface SquarePileProps {
-  className?: string
-  size?: number | string
-  fill?: string
-  inverted?: boolean
-  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'outline' | 'fill'
-}
+import { IconProps } from '../../../@types/IconProps'
 
 export function SquarePile({
   size = '1em',
   className,
   fill = 'none',
   inverted = false,
+  customColors,
   weight = 'light',
   ...rest
-}: SquarePileProps) {
+}: IconProps) {
   let selectedWeight = ''
   let stroke = 'currentColor'
 
@@ -52,7 +47,7 @@ export function SquarePile({
     >
       <path
         className={className}
-        stroke={stroke}
+        stroke={customColors?.outter || stroke}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={selectedWeight}
@@ -60,7 +55,7 @@ export function SquarePile({
       ></path>
       <path
         className={className}
-        stroke={stroke}
+        stroke={customColors?.inner || stroke}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={selectedWeight}
@@ -68,7 +63,7 @@ export function SquarePile({
       ></path>
       <path
         className={className}
-        stroke={stroke}
+        stroke={customColors?.outter || stroke}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={selectedWeight}

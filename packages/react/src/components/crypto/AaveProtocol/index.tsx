@@ -1,19 +1,14 @@
-interface AaveProtocolProps {
-  className?: string
-  size?: number | string
-  fill?: string
-  inverted?: boolean
-  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'outline' | 'fill'
-}
+import { IconProps } from '../../../@types/IconProps'
 
 export function AaveProtocol({
   size = '1em',
   className,
   fill = 'none',
   inverted = false,
+  customColors,
   weight = 'light',
   ...rest
-}: AaveProtocolProps) {
+}: IconProps) {
   let selectedWeight = ''
   let strokeOut = 'currentColor'
   let strokeIn = 'currentColor'
@@ -55,14 +50,14 @@ export function AaveProtocol({
     >
       <path
         className={className}
-        stroke={strokeOut}
+        stroke={customColors?.outter || strokeOut}
         strokeWidth={selectedWeight}
         strokeMiterlimit="10"
         d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
       />
       <path
         className={className}
-        stroke={strokeIn}
+        stroke={customColors?.inner || strokeIn}
         strokeWidth={selectedWeight}
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -71,7 +66,7 @@ export function AaveProtocol({
       />
       <path
         className={className}
-        stroke={strokeIn}
+        stroke={customColors?.inner || strokeIn}
         strokeWidth={selectedWeight}
         strokeMiterlimit="10"
         strokeLinecap="round"

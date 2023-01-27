@@ -1,5 +1,11 @@
 # @uicons/react
 
+## 1.2.0
+
+### Minor Changes
+
+- Add new prop customColors and separete types on file
+
 ## 1.1.0
 
 ### Minor Changes

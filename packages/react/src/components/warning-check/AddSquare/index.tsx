@@ -1,19 +1,14 @@
-interface AddSquareProps {
-  className?: string
-  size?: number | string
-  fill?: string
-  inverted?: boolean
-  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'outline' | 'fill'
-}
+import { IconProps } from '../../../@types/IconProps'
 
 export function AddSquare({
   size = '1em',
   className,
   fill = 'none',
   inverted = false,
+  customColors,
   weight = 'light',
   ...rest
-}: AddSquareProps) {
+}: IconProps) {
   let selectedWeight = ''
   let strokeOut = 'currentColor'
   let strokeIn = 'currentColor'
@@ -55,7 +50,7 @@ export function AddSquare({
     >
       <path
         className={className}
-        stroke={strokeOut}
+        stroke={customColors?.outter || strokeOut}
         strokeWidth={selectedWeight}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -63,7 +58,7 @@ export function AddSquare({
       />
       <path
         className={className}
-        stroke={strokeIn}
+        stroke={customColors?.inner || strokeIn}
         strokeWidth={selectedWeight}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -71,45 +66,12 @@ export function AddSquare({
       />
       <path
         className={className}
-        stroke={strokeIn}
+        stroke={customColors?.inner || strokeIn}
         strokeWidth={selectedWeight}
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M12 16V8"
       />
     </svg>
-    // <svg
-    //   xmlns="http://www.w3.org/2000/svg"
-    //   width={size}
-    //   height={size}
-    //   fill={fill}
-    //   viewBox="0 0 24 24"
-    //   {...rest}
-    // >
-    //   <path
-    //     className={className}
-    //     stroke={strokeOut}
-    //     strokeWidth={selectedWeight}
-    //     strokeLinecap="round"
-    //     strokeLinejoin="round"
-    //     d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
-    //   />
-    //   <path
-    //     className={className}
-    //     stroke={strokeIn}
-    //     strokeWidth={selectedWeight}
-    //     strokeLinecap="round"
-    //     strokeLinejoin="round"
-    //     d="M8 12H16"
-    //   />
-    //   <path
-    //     className={className}
-    //     stroke={strokeIn}
-    //     strokeWidth={selectedWeight}
-    //     strokeLinecap="round"
-    //     strokeLinejoin="round"
-    //     d="M12 16V8"
-    //   />
-    // </svg>
   )
 }

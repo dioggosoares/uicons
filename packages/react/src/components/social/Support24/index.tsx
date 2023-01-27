@@ -1,19 +1,14 @@
-interface Support24Props {
-  className?: string
-  size?: number | string
-  fill?: string
-  inverted?: boolean
-  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'outline' | 'fill'
-}
+import { IconProps } from '../../../@types/IconProps'
 
 export function Support24({
   size = '1em',
   className,
   fill = 'none',
   inverted = false,
+  customColors,
   weight = 'light',
   ...rest
-}: Support24Props) {
+}: IconProps) {
   let selectedWeight = ''
   let strokeOut = 'currentColor'
   let strokeIn = 'currentColor'
@@ -55,7 +50,7 @@ export function Support24({
     >
       <path
         className={className}
-        stroke={strokeOut}
+        stroke={customColors?.outter || strokeOut}
         strokeWidth={selectedWeight}
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -64,7 +59,7 @@ export function Support24({
       />
       <path
         className={className}
-        stroke={strokeIn}
+        stroke={customColors?.inner || strokeIn}
         strokeWidth={selectedWeight}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -72,7 +67,7 @@ export function Support24({
       />
       <path
         className={className}
-        stroke={strokeIn}
+        stroke={customColors?.inner || strokeIn}
         strokeWidth={selectedWeight}
         strokeLinecap="round"
         strokeLinejoin="round"
