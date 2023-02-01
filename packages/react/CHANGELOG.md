@@ -1,5 +1,11 @@
 # @uicons/react
 
+## 1.5.0
+
+### Minor Changes
+
+- Add a new icon
+
 ## 1.4.0
 
 ### Minor Changes
